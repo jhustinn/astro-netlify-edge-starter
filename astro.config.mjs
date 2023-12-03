@@ -1,10 +1,11 @@
-import { defineConfig } from 'astro/config';
-import netlify from '@astrojs/netlify/edge-functions';
+import { defineConfig } from "astro/config";
+import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 
-// https://astro.build/config
+import netlify from "@astrojs/netlify/functions";
+
 export default defineConfig({
-  integrations: [react()],
+  integrations: [tailwind(), react()],
   adapter: netlify(),
-  output: 'server'
+  output: "server",
 });

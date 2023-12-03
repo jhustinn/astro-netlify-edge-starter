@@ -1,0 +1,40 @@
+---
+const url = "http://localhost:8080/cms/";
+
+const gallery = await fetch(url + "API_gallery").then((response) => {
+  return response.json();
+});
+
+const category = await fetch(url + "API_category").then((response) => {
+  return response.json();
+});
+
+import { ViewTransitions } from "astro:transitions";
+import Layout from "../../Layout/Layout.astro";
+import Gallery from "../../components/Gallery.astro";
+import Hero from "../../components/Hero.astro";
+
+const title = "Gallery";
+---
+
+<Layout>
+  <Hero title={title} />
+  <div class="flex items-center justify-center py-4 md:py-8 flex-wrap">
+    <button
+      type="button"
+      class="text-blue-700 hover:text-white border border-blue-600 bg-white hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:bg-gray-900 dark:focus:ring-blue-800"
+      >All categories</button
+    >
+    {
+      category.map(({ nama_kategori }) => (
+        <button
+          type="button"
+          class="text-gray-900 border border-white hover:border-gray-200 dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-gray-800"
+        >
+          {nama_kategori}
+        </button>
+      ))
+    }
+  </div>
+  <Gallery title={title} gallery={gallery} transition:animate={"fade"} />
+</Layout>

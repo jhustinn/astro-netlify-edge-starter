@@ -1,0 +1,40 @@
+---
+import Layout from "../../Layout/Layout.astro";
+import Form from "../../components/Form.jsx";
+---
+
+<Layout>
+    <Form />
+</Layout>
+<script is:inline src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script is:inline>
+  $(document).ready(function () {
+    $("#feedbackForm").on("submit", (e) => {
+      e.preventDefault();
+      var formData = new FormData(document.getElementById("feedbackForm"));
+      
+      $.ajax({
+        type: "POST",
+        url: "http://localhost:8080/cms/API",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+          if (response.status == true) {
+            // alert(response);
+
+            $("#feedbackForm").trigger("reset");
+            // $("#saranModal").show();
+            alert("Success!");
+          } else {
+            alert("Failed!");
+          }
+        },
+        error: function (error) {
+          console.log(error);
+          // Handle kesalahan jika permintaan gagal
+        },
+      });
+    });
+  });
+</script>

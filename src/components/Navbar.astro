@@ -1,0 +1,157 @@
+---
+import ThemeBtn from "../components/ThemeBtn.astro";
+
+const { webTitle } = Astro.props;
+---
+
+<nav class="hidden xl:block sticky w-6/12 top-2 bg-white border-gray-200 dark:bg-gray-800 my-6 mx-auto px-4 py-1 rounded-full drop-shadow-2xl z-50">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <a href="https://flowbite.com/" class="flex items-center">
+      <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="Flowbite Logo" />
+      <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">{webTitle}</span>
+    </a>
+    <div class="flex items-center md:order-2">
+      <ThemeBtn/>
+    </div>
+    <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-language">
+      <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-800 dark:border-gray-700">
+        <li>
+          <a href="/" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-white">Home</a>
+        </li>
+        <li>
+          <a
+            href="/blog"
+            class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            >Blog</a
+          >
+        </li>
+        <li>
+          <a
+            href="/gallery"
+            class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            >Gallery</a
+          >
+        </li>
+        <li>
+          <a
+            href="/contact"
+            class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            >Contact</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div
+  id="bottomNav"
+  class="lg:hidden sm:block fixed z-20 sm:w-full w-96 h-16 max-w-lg ml-14 shadow-2xl shadow-stone-900 md:left-52 bg-white border border-gray-200 rounded-full bottom-4 dark:bg-gray-700 dark:border-gray-600"
+  transition:animate="none"
+>
+  <div class="grid h-full max-w-lg grid-cols-5 mx-auto">
+    <a href="/" data-tooltip-target="tooltip-home" type="button" class="inline-flex flex-col items-center justify-center px-5 rounded-l-full hover:bg-gray-50 dark:hover:bg-gray-800 group">
+      <svg class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+        <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"
+        ></path>
+      </svg>
+      <span class="sr-only">Home</span>
+    </a>
+    <div id="tooltip-home" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+      Home
+      <div class="tooltip-arrow" data-popper-arrow></div>
+    </div>
+    <a href="/blog" data-tooltip-target="tooltip-blog" type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+      <svg class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+        <path d="M17 0h-5.768a1 1 0 1 0 0 2h3.354L8.4 8.182A1.003 1.003 0 1 0 9.818 9.6L16 3.414v3.354a1 1 0 0 0 2 0V1a1 1 0 0 0-1-1Z"></path>
+        <path d="m14.258 7.985-3.025 3.025A3 3 0 1 1 6.99 6.768l3.026-3.026A3.01 3.01 0 0 1 8.411 2H2.167A2.169 2.169 0 0 0 0 4.167v11.666A2.169 2.169 0 0 0 2.167 18h11.666A2.169 2.169 0 0 0 16 15.833V9.589a3.011 3.011 0 0 1-1.742-1.604Z"
+        ></path>
+      </svg>
+      <span class="sr-only">Blog</span>
+    </a>
+    <div id="tooltip-blog" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+      Blog
+      <div class="tooltip-arrow" data-popper-arrow></div>
+    </div>
+    <div class="flex items-center justify-center">
+      <ThemeBtn/>
+    </div>
+
+    <a href="/gallery" data-tooltip-target="tooltip-Gallery" type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+      <svg class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 12.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"></path>
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M17 3h-2l-.447-.894A2 2 0 0 0 12.764 1H7.236a2 2 0 0 0-1.789 1.106L5 3H3a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V5a2 2 0 0 0-2-2Z"></path>
+      </svg>
+      <span class="sr-only">Gallery</span>
+    </a>
+    <div id="tooltip-Gallery" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+      Gallery
+      <div class="tooltip-arrow" data-popper-arrow></div>
+    </div>
+    <a href="/contact" data-tooltip-target="tooltip-profile" type="button" class="inline-flex flex-col items-center justify-center px-5 rounded-r-full hover:bg-gray-50 dark:hover:bg-gray-800 group">
+      <svg class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z"></path>
+      </svg>
+      <span class="sr-only">Contact</span>
+    </a>
+    <div id="tooltip-profile" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+      Contact
+      <div class="tooltip-arrow" data-popper-arrow></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Add CSS for smooth transition */
+  nav {
+    transition: transform 0.3s ease; /* Adjust the duration and easing as needed */
+  }
+  #bottomNav {
+    transition: transform 0.3s ease; /* Adjust the duration and easing as needed */
+  }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const navbar = document.querySelector("nav");
+    const scrollThreshold = 200; // Adjust this value to your desired threshold
+    let prevScrollPos = window.pageYOffset;
+
+    window.onscroll = function () {
+      let currentScrollPos = window.pageYOffset;
+
+      if (prevScrollPos < currentScrollPos && currentScrollPos > scrollThreshold) {
+        // User is scrolling down and past the specified threshold, hide the navbar with animation
+        navbar.style.transform = `translateY(-110px)`; // Hide by moving above its height
+      } else {
+        // User is either scrolling up or above the threshold, show the navbar with animation
+        navbar.style.transform = "translateY(0)";
+      }
+
+      prevScrollPos = currentScrollPos;
+    };
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const navbar = document.querySelector("#bottomNav");
+    let prevScrollPos = window.pageYOffset;
+
+    window.addEventListener("scroll", function () {
+      let currentScrollPos = window.pageYOffset;
+
+      if (prevScrollPos > currentScrollPos) {
+        // User is scrolling up, show the navbar with animation
+        navbar.style.transform = "translateY(0)";
+      } else {
+        // User is scrolling down, hide the navbar with animation
+        navbar.style.transform = "translateY(110px)"; // Hide by moving below its height
+      }
+
+      prevScrollPos = currentScrollPos;
+    });
+  });
+</script>

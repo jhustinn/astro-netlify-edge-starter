@@ -1,0 +1,67 @@
+---
+
+const config = await fetch("http://localhost:8080/cms/API_config").then((response) => {
+  return response.json();
+});
+
+import Header from "../components/Header.astro";
+import Navbar from "../components/Navbar.astro";
+import Pagination from "../components/Pagination.astro";
+import Footer from "../components/Footer.astro";
+import BackToTopBtn from "../components/BackToTopBtn.astro";
+import { ViewTransitions } from "astro:transitions";
+---
+
+{config.map(({ judul_website }) => <Header title={judul_website} />)}
+<style is:global>
+  ::view-transition-old(wrapper),
+  ::view-transition-new(wrapper) {
+    /* Prevent the default animation,
+so both views remain opacity:1 throughout the transition */
+    animation: none;
+    /* Use normal blending,
+so the new view sits on top and obscures the old view */
+    mix-blend-mode: normal;
+    /* Make the height the same as the group,
+meaning the view size might not match its aspect-ratio. */
+    height: 100%;
+    /* Clip any overflow of the view */
+    overflow: clip;
+  }
+
+  /* The old view is the thumbnail */
+  ::view-transition-old(wrapper) {
+    /* Maintain the aspect ratio of the view,
+by shrinking it to fit within the bounds of the element */
+    object-fit: contain;
+  }
+
+  /* The new view is the full image */
+  ::view-transition-new(wrapper) {
+    /* Maintain the aspect ratio of the view,
+by growing it to cover the bounds of the element */
+    object-fit: cover;
+  }
+
+  ::view-transition-group(overlay) {
+    z-index: 1;
+  }
+
+  ::view-transition-group(wrapper),
+  ::view-transition-group(cover-image) {
+    z-index: 2;
+  }
+
+  ::view-transition-group(modal-content) {
+    z-index: 3;
+  }
+
+  ::view-transition-old(modal-content):only-child {
+    display: none;
+  }
+</style>
+{config.map(({ judul_website }) => <Navbar webTitle={judul_website}/>)}
+<BackToTopBtn />
+<slot />
+<Footer />
+

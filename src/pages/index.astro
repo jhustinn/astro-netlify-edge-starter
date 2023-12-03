@@ -1,22 +1,22 @@
 ---
-import Layout from '../components/Layout.astro';
-import Button from '../components/Button';
+const url = "http://api.jhustynn.my.id/";
+
+const content = await fetch(url + "API_content").then((response) => {
+  return response.json();
+});
+
+import Layout from "../Layout/Layout.astro";
+import Card from "../components/Card.astro";
+import Hero from "../components/Hero.astro";
+import Carousel from "../components/Carousel.astro";
+import Search from "../components/Search.astro";
 ---
 
-<Layout title="Netlify Edge functions with Astro">
-	<main>
-		<h1>Netlify Edge Functions with Astro</h1>
-
-		Welcome, visitor from COUNTRYNAME!
-
-		<div><Button client:load /></div>
-	</main>
+<Layout>
+  <Hero title="Home" />
+  <Carousel content={content} />
+  <div class="block mx-auto max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <Search />
+  </div>
+  <Card content={content} />
 </Layout>
-
-<style>
-main {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-</style>

@@ -1,0 +1,31 @@
+---
+// Import
+import Layout from "../../Layout/Layout.astro";
+import Hero from "../../components/Hero.astro";
+import Photo from "../../components/Photo.astro";
+
+const gallery = await fetch("http://localhost:8080/cms/API_gallery").then((response) => {
+  return response.json();
+});
+
+const { id } = Astro.params;
+const selectedContent = gallery.find((item) => item.id_galeri === id);
+
+export async function getStaticPaths() {
+  // Fetch the content here and create an array of dynamic paths
+  const gallery = await fetch("http://localhost:8080/cms/API_gallery").then((response) => {
+    return response.json();
+  });
+
+  const paths = gallery.map((g) => ({
+    params: { id: g.id_galeri },
+  }));
+
+  return paths;
+}
+---
+
+<Layout>
+  <Hero title="Gallery" />
+  <Photo content={gallery} photo={selectedContent} transition:name="cover-image" withoutImage />
+</Layout>
